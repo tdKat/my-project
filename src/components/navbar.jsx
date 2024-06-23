@@ -1,150 +1,63 @@
 // Navbar.js
 
-import React, { useState } from 'react';
+import React from 'react';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Navbar = ({ restaurantName }) => {
   return (
-    <nav className="bg-gradient-to-r from-red-400 to-red-600">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Left section: Restaurant Name */}
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-extrabold text-white">BFC Racket</h1>
-          </div>
-
-          {/* Middle section: Navigation links */}
-          <div className="hidden md:flex flex-grow justify-center space-x-8">
-            <a
-              href="#"
-              className="text-lg font-medium text-white mr-8 hover:text-gray-200 transition duration-300"
-            >
-              Menu
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Takeaway
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Dine-in
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Delivery
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Custom Order
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex">
+    <nav className="bg-gray-800 shadow-lg">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-16">
+          {/* Admin Panel title */}
+          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button
-              onClick={toggleMenu}
-              className="text-white hover:text-gray-200 focus:outline-none"
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             >
+              {/* Icon or text for mobile menu */}
+              <span className="sr-only">Open main menu</span>
               <svg
+                className="block h-6 w-6"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                aria-hidden="true"
               >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>
 
-          {/* Right section: Login/Signup and Cart button */}
-          <div className="flex-shrink-0">
-            <div className="flex items-center space-x-4">
-              <button className="text-lg font-medium text-white hover:text-gray-200 transition duration-300">
-                Login / Signup
-              </button>
-              <button className="text-lg font-medium text-white hover:text-gray-200 transition duration-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
+          {/* Centered title and restaurant name */}
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex-shrink-0">
+              <span className="text-white text-xl font-bold">Admin Panel</span>
+            </div>
+            <div className="hidden sm:block sm:ml-6">
+              <div className="flex space-x-4">
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  {restaurantName}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden m-8 flex flex-col items-center space-y-4">
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
+          {/* Right side button (example: Logout or Settings) */}
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Menu
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Takeaway
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Dine-in
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Delivery
-            </a>
-            <a
-              href="#"
-              className="text-lg font-medium text-white hover:text-gray-200 transition duration-300"
-            >
-              Custom Order
-            </a>
+              {/* Button text (example: "Logout") */}
+              Button
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );
